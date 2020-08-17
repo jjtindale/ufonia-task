@@ -1,0 +1,22 @@
+{
+  "name": "ufonia-task",
+  "version": "0.0.1-alpha",
+  "description": "Ufonia coding task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjtindale/ufonia-task.git"
+  },
+  "author": "Joe Tindale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjtindale/ufonia-task/issues"
+  },
+  "homepage": "https://github.com/jjtindale/ufonia-task#readme",
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
+}
