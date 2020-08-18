@@ -1,10 +1,10 @@
 import twilio from "twilio";
-import Container, { Service } from "typedi";
+import { Service } from "typedi";
 import { ConfigService } from "../config/ConfigService";
 
 @Service()
-class TwilioClientFactory {
-  constructor(private readonly configService: ConfigService) {}
+export class TwilioClientFactory {
+  constructor(private configService: ConfigService) {}
 
   create(): twilio.Twilio {
     return twilio(
@@ -13,5 +13,3 @@ class TwilioClientFactory {
     );
   }
 }
-
-Container.set({ id: twilio.Twilio, factory: [TwilioClientFactory, "create"] });

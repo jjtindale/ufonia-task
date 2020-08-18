@@ -1,7 +1,9 @@
 import twilio from "twilio";
+import RestException from "twilio/lib/base/RestException";
 import { Service } from "typedi";
 import { ConfigService } from "../config/ConfigService";
 import { CallDto } from "./CallDto";
+import VoiceResponse from "twilio/lib/twiml/VoiceResponse";
 
 @Service()
 export class CallService {
@@ -25,14 +27,27 @@ export class CallService {
   }
 
   async getCall(id: string): Promise<CallDto | null> {
-    const call = await this.twilioClient.calls(id).fetch();
-    return call ? CallDto.fromCall(call) : null;
+    try {
+      const call = await this.twilioClient.calls(id).fetch();
+      return CallDto.fromCall(call);
+    } catch (e) {
+      if (e instanceof RestException) {
+        if (e.status === 404) {
+          return null;
+        }
+      }
+      throw e;
+    }
   }
 
   async makeCall(toPhoneNumber: string): Promise<CallDto> {
+    const greetingTwiml = new VoiceResponse();
+    greetingTwiml.say("Hello!");
+
     const call = await this.twilioClient.calls.create({
       from: this.fromPhoneNumber,
       to: toPhoneNumber,
+      twiml: greetingTwiml.toString(),
     });
     return CallDto.fromCall(call);
   }
