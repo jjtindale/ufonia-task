@@ -1,11 +1,6 @@
-import express from "express";
+import { app } from "./app";
 
-const app = express();
 const port = process.env.PORT ?? 3000;
-
-app.get("/", (req, res) => {
-  res.send("Ufonia Task");
-});
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}.`);
