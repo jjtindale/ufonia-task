@@ -8,7 +8,7 @@
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "test": "jest",
     "build": "tsc",
-    "prod": "node build/index.js"
+    "prod": "node build/src/index.js"
   },
   "repository": {
     "type": "git",
