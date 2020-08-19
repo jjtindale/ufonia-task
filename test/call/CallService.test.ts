@@ -44,6 +44,8 @@ describe("makeCall()", () => {
     expect(mockTwilio.calls.create).toHaveBeenCalledWith({
       to: toPhoneNumber,
       from: fromPhoneNumber,
+      twiml:
+        '<?xml version="1.0" encoding="UTF-8"?><Response><Say>Hello!</Say></Response>',
     });
   });
 });
