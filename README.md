@@ -37,3 +37,12 @@ Base URL: http://ufonia.joetindale.com/
 - `POST /calls { "toPhoneNumber": "+44..." }`  
   creates an outgoing call to the phone number. The phone number must be  
   manually verified in Twilio as the account is in trial mode.
+
+### Potential Future Improvements
+
+- HTTPS
+- Nicer voice. I believe Twilio uses Amazon Polly, so the gender/accent could be tweaked.
+- Fail fast with config errors.
+- Formatting and linting via Prettier, JSHint.
+- Integration tests, especially when the project grows.
+- Set up a searchable log stream.
